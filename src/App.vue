@@ -1,43 +1,24 @@
+<script setup>
+import q from "./data/quizes.json"
+import { ref } from "vue";
+
+const quizes = ref(q)
+
+</script>
+
 <template>
   <div class="container">
+    
     <header>
       <h1>Quizes</h1>
       <input type="text" placeholder="Search...">
     </header>
     <div class="cards">
-      <div class="card">
-        <img src="https://miro.medium.com/v2/resize:fit:1400/1*L76A5gL6176UbMgn7q4Ybg.jpeg" alt="Math">
+      <div class="card" v-for="quiz in quizes" :key="quiz.id">
+        <img :src="quiz.img" :alt="quiz.name">
         <div class="card-text">
-          <h2>Math</h2>
-          <p>15 questions</p>
-        </div>
-      </div>
-      <div class="card">
-        <img src="https://miro.medium.com/v2/resize:fit:1400/1*L76A5gL6176UbMgn7q4Ybg.jpeg" alt="Math">
-        <div class="card-text">
-          <h2>Math</h2>
-          <p>15 questions</p>
-        </div>
-      </div>
-      <div class="card">
-        <img src="https://miro.medium.com/v2/resize:fit:1400/1*L76A5gL6176UbMgn7q4Ybg.jpeg" alt="Math">
-        <div class="card-text">
-          <h2>Math</h2>
-          <p>15 questions</p>
-        </div>
-      </div>
-      <div class="card">
-        <img src="https://miro.medium.com/v2/resize:fit:1400/1*L76A5gL6176UbMgn7q4Ybg.jpeg" alt="Math">
-        <div class="card-text">
-          <h2>Math</h2>
-          <p>15 questions</p>
-        </div>
-      </div>
-      <div class="card">
-        <img src="https://miro.medium.com/v2/resize:fit:1400/1*L76A5gL6176UbMgn7q4Ybg.jpeg" alt="Math">
-        <div class="card-text">
-          <h2>Math</h2>
-          <p>15 questions</p>
+          <h2> {{ quiz.name }}</h2>
+          <p> {{ quiz.questions.length }} questions</p>
         </div>
       </div>
     </div>
@@ -68,9 +49,7 @@
 }
 
 .card:hover {
-  box-shadow: 0px 0px 10px #00000080;
-  transform: scaleX(1.05) scaleY(1.05);
-
+  box-shadow: 0px 0px 16px #00000080;
 }
 
 .card img {
